@@ -12,10 +12,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-        "onCommand:extension.openMyExtension",
-        "onCommand:extension.useMyExtension"
-      ],
+  "activationEvents": ["pdfycode.code2pdf"],
   "main": "./extension.js",
   "contributes": {
     "commands": [
