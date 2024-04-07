@@ -42,6 +42,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "markdown-pdf": "^11.0.0"
+    "markdown-pdf": "^11.0.0",
+    "md-to-pdf": "^5.2.4"
   }
 }
