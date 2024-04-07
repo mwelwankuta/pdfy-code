@@ -2,7 +2,7 @@
 
 Convert your highlighted code in Visual Studio Code to a PDF file with ease using this extension.
 
-![Image](./images/image.png)
+![Image](./assets/image.png)
 
 ## Features
 
