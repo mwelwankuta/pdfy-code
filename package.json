@@ -12,8 +12,8 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["pdfycode.code2pdf"],
   "main": "./extension.js",
+  "activationEvents": ["pdfycode.code2pdf"],
   "contributes": {
     "commands": [
       {
