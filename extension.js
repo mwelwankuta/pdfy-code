@@ -1,7 +1,5 @@
 const vscode = require('vscode');
 const fs = require("fs");
-const path = require("path");
-
 
 function textToMD(text, language) {
 	return `\`\`\`${language}\n${text}\`\`\``;
@@ -18,6 +16,7 @@ async function save(text, language) {
 	}
 
 	const uri = await vscode.window.showSaveDialog(options);
+
 	if (uri) {
 		const filePath = uri.fsPath;
 		vscode.window.showInformationMessage(filePath);
