@@ -2,7 +2,7 @@
   "name": "pdfycode",
   "displayName": "PDFyCode",
   "description": "A code to pdf converter.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "publisher": "mwelwankuta",
   "icon": "./assets/icon.png",
   "repository": "https://github.com/mwelwankuta/pdfy-code",
