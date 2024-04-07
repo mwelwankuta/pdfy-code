@@ -2,6 +2,8 @@
 
 Convert your highlighted code in Visual Studio Code to a PDF file with ease using this extension.
 
+![Image](./images/image.png)
+
 ## Features
 
 - Convert highlighted code in the active editor to a PDF file.

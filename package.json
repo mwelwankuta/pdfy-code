@@ -3,6 +3,7 @@
   "displayName": "PDFyCode",
   "description": "A code to pdf converter.",
   "version": "0.0.1",
+  "repository": "https://github.com/mwelwankuta/pdfy-code",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -30,7 +31,9 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "pnpm run lint",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "pnpm vsce package --no-dependencies",
+    "publish": "pnpm vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
