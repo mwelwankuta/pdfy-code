@@ -19,10 +19,12 @@
       }
     ],
     "menus": {
-      "editor/context": [{
-        "command": "pdfycode.code2pdf",
-        "title": "Convert To PDF"
-      }]
+      "editor/context": [
+        {
+          "command": "pdfycode.code2pdf",
+          "title": "Convert To PDF"
+        }
+      ]
     }
   },
   "scripts": {
@@ -31,12 +33,15 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.54.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
-    "eslint": "^8.57.0",
-    "typescript": "^5.3.3",
+    "@types/vscode": "^1.54.0",
     "@vscode/test-cli": "^0.0.8",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "markdown-pdf": "^11.0.0"
   }
 }

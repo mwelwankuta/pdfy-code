@@ -1,6 +1,7 @@
 const vscode = require('vscode');
-const fs = require("fs")
-const path = require("path")
+const fs = require("fs");
+const path = require("path");
+
 
 function textToMD(text, language) {
 	return `\`\`\`${language}\n${text}\`\`\``;
@@ -8,11 +9,21 @@ function textToMD(text, language) {
 
 async function save(text, language) {
 	const md = textToMD(text, language);
-	const cwd = process.cwd()
-	const dir = path.join(cwd, "out.md")
-	
-	// test
-	await fs.promises.writeFile(dir, md);
+
+	const options = {
+		saveLabel: "Save",
+		filters: {
+			"PDF Files": ["pdf"]
+		}
+	}
+
+	const uri = await vscode.window.showSaveDialog(options);
+	if (uri) {
+		const filePath = uri.fsPath;
+		vscode.window.showInformationMessage(filePath);
+		// do your thing here
+		// convert the markdown to pdf and save
+	}
 }
 
 function activate(context) {
@@ -25,7 +36,6 @@ function activate(context) {
 				const fileName = ed.document.fileName;
 				const lang = fileName.split(".").pop();
 				save(selectedText, lang);
-				// your code here bruv
 			}
 		}
 	})
