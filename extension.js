@@ -3,8 +3,20 @@ const { mdToPdf } = require("md-to-pdf");
 const vscode = require("vscode");
 const fs = require("fs");
 
-function textToMD(text, language) {
-  return `\`\`\`${language}\n${text}\`\`\``;
+/**
+ * turns code snippet into markdown code snippet
+ * @param {string} content  - content
+ * @param {string} language - file/language extension
+ * @returns {string} string as markdown code embed
+ */
+function textToMD(content, language) {
+  return `\`\`\`${language}\n${content}\n`;
+}
+
+function shouldIncludePdfExtension(filepath) {
+  if (filepath.includes(".pdf")) return filepath;
+
+  return filepath + ".pdf";
 }
 
 async function save(text, language) {
@@ -24,13 +36,13 @@ async function save(text, language) {
     try {
       const { content, filename } = await mdToPdf(
         { content: md },
-        { dest: filePath + ".pdf" }
+        { dest: shouldIncludePdfExtension(filePath) }
       );
 
-      vscode.window.showInformationMessage(filePath + ".pdf");
+      vscode.window.showInformationMessage("File saved to: " + filePath);
       fs.writeFileSync(filename, content);
     } catch (error) {
-      vscode.window.showInformationMessage(
+      vscode.window.showErrorMessage(
         "An error occurred: Could not convert to pdf \n" + error
       );
     }
