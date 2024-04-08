@@ -2,7 +2,7 @@
 
 Convert your highlighted code in Visual Studio Code to a PDF file with ease using this extension.
 
-![Image](https://github.com/mwelwankuta/pdfy-code/blob/main/assets/image.png)
+![Image](./assets//usage.gif)
 
 ## Features
 
