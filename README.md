@@ -22,6 +22,7 @@ Convert your highlighted code in Visual Studio Code to a PDF file with ease usin
 4. Click **Install** to install the extension.
 5. Once installed, click **Reload** to activate the extension.
 6. Run the following command in your terminal to install Puppeteer and Chrome:
+
    ```bash
    npx puppeteer browsers install chrome
    ```

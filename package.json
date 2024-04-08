@@ -2,10 +2,12 @@
   "name": "pdfycode",
   "displayName": "PDFyCode",
   "description": "A code to pdf converter.",
-  "version": "0.5.6",
+  "version": "0.6.0",
   "publisher": "mwelwankuta",
   "icon": "./assets/icon.png",
-  "repository": "https://github.com/mwelwankuta/pdfy-code",
+  "repository": {
+    "url": "https://github.com/mwelwankuta/pdfy-code"
+  },
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -14,13 +16,18 @@
   ],
   "main": "./extension.js",
   "activationEvents": [
-    "onCommand:pdfycode.code2pdf"
+    "onCommand:pdfycode.code2pdf",
+    "onCommand:pdfycode.showPopup"
   ],
   "contributes": {
     "commands": [
       {
         "command": "pdfycode.code2pdf",
         "title": "Convert To PDF"
+      },
+      {
+        "command": "pdfycode.isInstalled",
+        "title": "Convert To PDF: Check if installed"
       }
     ],
     "menus": {
@@ -36,8 +43,8 @@
     "lint": "eslint .",
     "pretest": "pnpm run lint",
     "test": "vscode-test",
-    "package": "pnpm vsce package --no-dependencies",
-    "publish": "pnpm vsce publish --no-dependencies"
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

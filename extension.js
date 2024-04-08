@@ -72,16 +72,25 @@ async function save(text, language) {
 }
 
 function activate(context) {
+  const otherCmd = vscode.commands.registerCommand("pdfycode.isInstalled", () => {
+    vscode.window.showInformationMessage("PDFyCode is installed");
+  })
+
+  context.subscriptions.push(otherCmd)
   const cmd = vscode.commands.registerCommand("pdfycode.code2pdf", () => {
     const ed = vscode.window.activeTextEditor;
-    if (ed) {
-      const selection = ed.selection;
-      if (!selection.isEmpty) {
-        const selectedText = ed.document.getText(selection);
-        const fileName = ed.document.fileName;
-        const lang = fileName.split(".").pop();
-        save(selectedText, lang);
-      }
+
+    if (!ed) return;
+
+    const selection = ed.selection;
+
+    if (!selection.isEmpty) {
+      const fileName = ed.document.fileName;
+      const selectedText = ed.document.getText(selection);
+
+      const lang = fileName.split(".").pop();
+
+      save(selectedText, lang);
     }
   });
   context.subscriptions.push(cmd);
