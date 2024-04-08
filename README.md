@@ -44,15 +44,9 @@ Convert your highlighted code in Visual Studio Code to a PDF file with ease usin
   4. Choose the desired options such as font size, line height, page orientation, file name, and save location in the dialog box.
   5. Click **Save** to generate the PDF file.
 
-## Release Notes
-
-### 0.0.5
-
-Initial release of Highlighted Code to PDF extension.
-
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue on [GitHub](https://github.com/mwelwankuta/pdfycode).
+Contributions are welcome! Please feel free to submit a pull request or open an issue on [GitHub](https://github.com/mwelwankuta/pdfy-code).
 
 ## License
 
