@@ -2,7 +2,7 @@
   "name": "pdfycode",
   "displayName": "PDFyCode",
   "description": "A code to pdf converter.",
-  "version": "0.5.4",
+  "version": "0.5.6",
   "publisher": "mwelwankuta",
   "icon": "./assets/icon.png",
   "repository": "https://github.com/mwelwankuta/pdfy-code",
@@ -13,7 +13,9 @@
     "Other"
   ],
   "main": "./extension.js",
-  "activationEvents": ["pdfycode.code2pdf"],
+  "activationEvents": [
+    "onCommand:pdfycode.code2pdf"
+  ],
   "contributes": {
     "commands": [
       {

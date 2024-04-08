@@ -1,5 +1,4 @@
 const { mdToPdf } = require("md-to-pdf");
-
 const vscode = require("vscode");
 const fs = require("fs");
 
@@ -19,6 +18,12 @@ function shouldIncludePdfExtension(filepath) {
   return filepath + ".pdf";
 }
 
+function getFilePath(filePathWithExtension) {
+  const filePath = filePathWithExtension.split(".");
+  filePath.pop();
+  return filePath.join(".");
+}
+
 async function save(text, language) {
   const md = textToMD(text, language);
 
@@ -31,21 +36,38 @@ async function save(text, language) {
 
   const uri = await vscode.window.showSaveDialog(options);
 
-  if (uri) {
-    const filePath = uri.fsPath;
-    try {
-      const { content, filename } = await mdToPdf(
-        { content: md },
-        { dest: shouldIncludePdfExtension(filePath) }
+  if (!uri) {
+    vscode.window.showWarningMessage(
+      "A file path is required to save the PDF file."
+    );
+    return;
+  }
+
+  const filePath = uri.fsPath;
+  try {
+    const { content, filename } = await mdToPdf(
+      { content: md },
+      { dest: shouldIncludePdfExtension(filePath) }
+    );
+
+    const showInExplorerButton = { title: "Open in explorer" };
+
+    const shouldOpenInExplorer = await vscode.window.showInformationMessage(
+      "File saved to: " + filePath,
+      showInExplorerButton
+    );
+
+    if (shouldOpenInExplorer === showInExplorerButton)
+      vscode.commands.executeCommand(
+        "revealFileInOS",
+        vscode.Uri.file(getFilePath(filename))
       );
 
-      vscode.window.showInformationMessage("File saved to: " + filePath);
-      fs.writeFileSync(filename, content);
-    } catch (error) {
-      vscode.window.showErrorMessage(
-        "An error occurred: Could not convert to pdf \n" + error
-      );
-    }
+    fs.writeFileSync(filename, content);
+  } catch (error) {
+    vscode.window.showErrorMessage(
+      "An error occurred: Could not convert to pdf \n" + error
+    );
   }
 }
 
